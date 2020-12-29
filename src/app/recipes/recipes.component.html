@@ -3,15 +3,8 @@
     <app-recipe-list ></app-recipe-list>
   </div>
   <div class="col-md-7">
-    <app-recipe-detail *ngIf="selectedRecipe;else  showMassage"
-    [recipe]="selectedRecipe">
-
-
+  <router-outlet></router-outlet>
   
-  </app-recipe-detail>
-  <ng-template #showMassage>
-    <p>Plz select one recipe</p>
-  </ng-template>
  
   </div>
 </div>
