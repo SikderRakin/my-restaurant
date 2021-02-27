@@ -25,5 +25,9 @@ igChangeSub:Subscription;
   ngOnDestroy():void{
     this.igChangeSub.unsubscribe();
   }
- 
+  onEdititem(index:number){
+    debugger;
+    this.slService.startedEditing.next(index);
+
+  }
 }
