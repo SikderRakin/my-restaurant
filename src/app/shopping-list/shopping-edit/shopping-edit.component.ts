@@ -30,7 +30,8 @@ constructor(private slService:ShoppingListService) { }
      })
      } );
   }
-  addItem(form: NgForm){
+
+  onSubmit(form: NgForm){
  const value =form.value
  
  const newIngredient=new Ingredient(value.name,value.amount);
@@ -42,5 +43,15 @@ constructor(private slService:ShoppingListService) { }
 this.slService.updateIngredientList(newIngredient);
 
   }
+  form.resetForm();
+  this.editMode=false;
+}
+onClear(){
+  this.slForm.reset();
+  this.editMode=false;
+}
+onDelete(){
+  this.slService.deleteItem( this.editedItemIndex);
+  this.onClear();
 }
 }

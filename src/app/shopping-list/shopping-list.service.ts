@@ -32,4 +32,11 @@ export class ShoppingListService{
 
 
       }
+      deleteItem(index:number){
+        this.ingredients.splice(index,1);
+        this.ingredientsChange.next(this.ingredients.slice())
+
+       
+     
+      }
 }
