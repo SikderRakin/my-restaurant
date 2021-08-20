@@ -16,6 +16,14 @@ import { AppRoutingModule } from "src/app/app-routing.module";
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { RecipeService } from "./recipes/recipe.service";
+import { AuthComponent } from "./auth/auth.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { MatCardModule } from "@angular/material/card";
+
+import { MatInputModule } from "@angular/material/input";
+
+import { MatButtonModule } from "@angular/material/button";
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +36,7 @@ import { RecipeService } from "./recipes/recipe.service";
     ShoppingEditComponent,
     RecipeStartComponent,
     RecipeEditComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +44,10 @@ import { RecipeService } from "./recipes/recipe.service";
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent],
