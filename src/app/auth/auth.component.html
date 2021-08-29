@@ -19,10 +19,10 @@
       </p> -->
 
       <div class="button">
-        <button type="submit" mat-button>Login</button>
+        <button type="submit" mat-button>{{isLoginMode?"Login" :"SingUp"}}</button>
       </div>
       <div class="button">
-        <button type="submit" mat-button>Sign Up</button>
+        <button type="button" (click)="swtichMode()" mat-button>Switch Mode</button>
       </div>
     </form>
   </mat-card-content>

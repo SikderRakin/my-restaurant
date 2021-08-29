@@ -10,11 +10,14 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/recipe">Recipes <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" *ngIf="!isAuthentication" routerLinkActive="active">
         <a class="nav-link" routerLink="/auth">Authentication</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
+      </li>
+      <li *ngIf="isAuthentication" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" (click)="logOut()">Log Out</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
