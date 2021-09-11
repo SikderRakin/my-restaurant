@@ -1,7 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import {
+  AlertComponent,
+  ConfirmDialogModel,
+} from "../shared/alert/alert.component";
+
 import { AuthResponseData, AuthService } from "./auth.service";
 
 @Component({
@@ -10,7 +16,12 @@ import { AuthResponseData, AuthService } from "./auth.service";
   styleUrls: ["./auth.component.css"],
 })
 export class AuthComponent {
-  constructor(private _userLogin: AuthService, private router: Router) {}
+  @Output() error = new EventEmitter<string>();
+  constructor(
+    private _userLogin: AuthService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
   form: FormGroup = new FormGroup({
     username: new FormControl(""),
     password: new FormControl(""),
@@ -32,15 +43,29 @@ export class AuthComponent {
         this.form.get("username").value,
         this.form.get("password").value
       );
-      this.router.navigate(["/recipe"]);
     }
 
     authObs.subscribe(
       (res) => {
+        this.router.navigate(["/recipe"]);
         console.log(res);
       },
       (errorRes) => {
-        console.log(errorRes);
+        this.error.emit(errorRes);
+
+        const message = errorRes;
+        const title = "Login Error";
+
+        const dialogData = new ConfirmDialogModel(title, message);
+
+        const dialogRef = this.dialog.open(AlertComponent, {
+          maxWidth: "400px",
+          data: dialogData,
+        });
+        //This is for getting the response from dialogbox (confirm/not)
+        // dialogRef.afterClosed().subscribe(dialogResult => {
+        //   this.result = dialogResult;
+        // });
       }
     );
   }
