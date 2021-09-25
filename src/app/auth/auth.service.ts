@@ -1,4 +1,5 @@
 import { NgSwitchCase } from "@angular/common";
+import { environment } from "../../environments/environment";
 import {
   HttpClient,
   HttpErrorResponse,
@@ -34,7 +35,8 @@ export class AuthService {
     };
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD5BFjkei9NXcUX9kTzSsyybf02PZWbsUY",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+          environment.APIKey,
         {
           email: email,
           password: password,
@@ -64,7 +66,8 @@ export class AuthService {
     };
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD5BFjkei9NXcUX9kTzSsyybf02PZWbsUY",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+          environment.APIKey,
         {
           email: email,
           password: password,
