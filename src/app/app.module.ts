@@ -23,7 +23,7 @@ import { CoreModule } from "./core.module";
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AlertComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
+import { Recipe } from "e2e/src/app/recipes/recipe.model";
 
 @Component({
   selector: "app-recipes",
@@ -6,7 +8,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./recipes.component.css"],
 })
 export class RecipesComponent implements OnInit {
-  constructor() {}
+  constructor(private title: Title, private meta: Meta) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle("recipe");
+    this.meta.addTag({ name: "Recipe", description: "Cake,Pizza,Burgers" });
+  }
 }
